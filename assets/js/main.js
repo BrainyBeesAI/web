@@ -244,9 +244,6 @@ jQuery(function ($) {
 		$('.preloader-area').addClass('preloader-deactivate');
 	});
 
-	// Buy Now Btn
-    $('body').append("<a href='https://themeforest.net/checkout/84094195/create_account?_ga=2.63813679.1430237439.1644119533-1297998632.1635997908' class='buy-now-btn' target='_blank'><img src='assets/img/envato.png' alt='envato'/>Buy Now</a>");
-
 	// NEW HOME JS
 
 	// Home Slides
