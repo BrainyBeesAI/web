@@ -155,6 +155,49 @@ img {
     }
 }
 
+.gap-3 {
+    gap: 0.75rem!important;
+  }
+  
+  .text-yellow-400 {
+    color: rgb(250, 204, 21);
+  }
+  
+  .text-gray-800 {
+    color: rgb(31, 41, 55);
+  }
+  
+  .text-gray-500 {
+    color: rgb(107, 114, 128);
+  }
+  
+  .font-bold {
+    font-weight: 700;
+  }
+  
+  .font-black {
+    font-weight: 900;
+  }
+  
+  .object-cover {
+    object-fit: cover;
+  }
+  .border-purple {
+    border-color: rgb(255 106 177) !important;
+  }
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  .w-14 {
+    width: 3.5rem;
+  }
+  .h-14 {
+    height: 3.5rem;
+  }
+  .tracking-tight {
+    letter-spacing: -.025em;
+  }  
+
 /*================================================
 Default btn CSS
 =================================================*/
@@ -1056,7 +1099,7 @@ Main Banner Area CSS
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
-    height: 700px;
+    height: 1100px;
 
     .container-fluid {
         padding-right: 0;
@@ -3531,6 +3574,39 @@ Timetable Area CSS
 /*================================================
 FAQ Area CSS
 =================================================*/
+.faq-area {
+    &.bg-ffffff {
+        background-image: url(../../assets/img/event/event-bg.jpg);
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        position: relative;
+        z-index: 1;
+      }
+
+      &.bg-ffffff::before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 100%;
+        background-color: #000000;
+        left: 0;
+        right: 0;
+        top: 0;
+        opacity: 0.3;
+        z-index: -1;
+      }
+      .section-title { 
+        span {
+            color: #ffffff;
+        }
+        h2 {
+            color: #ffffff;
+          }
+      }
+}   
+  
 .faq-accordion {
     background-color: $white-color;
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.09);
@@ -3599,7 +3675,7 @@ FAQ Area CSS
     }
 }
 .faq-image {
-    background-image: url(../../assets/img/faq.jpg);
+    background-image: url(../../assets/img/class-details.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

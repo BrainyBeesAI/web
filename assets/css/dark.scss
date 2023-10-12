@@ -123,6 +123,14 @@ $black-color: #000000;
         }
     }
     
+    .text-gray-500 {
+        color: #6b6b84;
+    }
+
+    .text-gray-800 {
+        color: white;
+    }
+
     .main-banner-item {
         background-color: #0a0a11;
         background-image: unset;
@@ -483,6 +491,17 @@ $black-color: #000000;
                     }
                 }
             }
+        }
+    }
+
+    .faq-area.bg-ffffff {
+        .faq-accordion .accordion { 
+            .accordion-title {
+                color: #1b0238 !important;
+            }
+            .accordion-content {
+                color: #6b6b84 !important;
+              }
         }
     }
 

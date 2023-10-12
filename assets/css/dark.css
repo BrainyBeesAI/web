@@ -104,6 +104,12 @@ Default CSS
 .theme-dark .h1 a:hover, .theme-dark .h2 a:hover, .theme-dark .h3 a:hover, .theme-dark .h4 a:hover, .theme-dark .h5 a:hover, .theme-dark .h6 a:hover, .theme-dark h1 a:hover, .theme-dark h2 a:hover, .theme-dark h3 a:hover, .theme-dark h4 a:hover, .theme-dark h5 a:hover, .theme-dark h6 a:hover {
   color: #ea512e;
 }
+.theme-dark .text-gray-500 {
+  color: #6b6b84;
+}
+.theme-dark .text-gray-800 {
+  color: white;
+}
 .theme-dark .main-banner-item {
   background-color: #0a0a11;
   background-image: unset;
@@ -325,6 +331,12 @@ Default CSS
 }
 .theme-dark .timetable .table tbody tr td span {
   color: #f1f1f1;
+}
+.theme-dark .faq-area.bg-ffffff .faq-accordion .accordion .accordion-title {
+  color: #1b0238 !important;
+}
+.theme-dark .faq-area.bg-ffffff .faq-accordion .accordion .accordion-content {
+  color: #6b6b84 !important;
 }
 .theme-dark .faq-accordion {
   background-color: #0a0a11;
