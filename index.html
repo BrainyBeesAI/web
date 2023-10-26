@@ -48,10 +48,10 @@
 
     <title>Brainy Bees Club - Ignite the Joy of Learning Through AI Storytelling</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
 </head>
 
 <body>
@@ -166,13 +166,18 @@
                                     <p>Explore the world of Brainy Bees Club and embark on an unforgettable learning
                                         journey with our AI-generated book series today!</p>
                                 </div>
-                                <div class="main-banner-content pt-4">
-                                    <form class="newsletter-form">
-                                        <input type="email" class="input-newsletter" placeholder="Enter your email..."
-                                            name="EMAIL" required autocomplete="off">
+                                <div class="main-banner-content pt-4 row-form">
+                                    <form class="newsletter-form" method="post">
+                                        <input id="subscriber_email" type="email" class="input-newsletter" placeholder="Enter your email..."
+                                            required autocomplete="email" name="fields[email]" aria-label="email" aria-required="true">
 
-                                        <button type="submit">Discover now</button>
-
+                                        <button id="newsletterSubmit" class="newsletter-submit-button" type="submit" disabled="true" data-toggle="tooltip" data-placement="top" title="Agree to privacy policy first">Discover now</button>
+                                        <input type="hidden" name="ml-submit" value="1">
+                                        <input type="hidden" name="anticsrf" value="true">
+                                        <div class="ms-2 mt-1 small text-body-tertiary">
+                                            <input type="checkbox" onchange="document.getElementById('newsletterSubmit').disabled = !this.checked; if (this.checked) { $('#newsletterSubmit').tooltip('disable'); } else { $('#newsletterSubmit').tooltip('enable'); }" /> 
+                                            I acknowledge that the information I provide will be processed in accordance with the <a href="privacy.html" target="_blank">Privacy Policy</a>.
+                                        </div>
                                         <div id="validator-newsletter" class="form-result"></div>
                                     </form>
                                 </div>
@@ -684,13 +689,18 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <form class="newsletter-form">
-                        <input type="email" class="input-newsletter" placeholder="Enter your email..." name="EMAIL"
-                            required autocomplete="off">
+                    <form class="newsletter-form" method="post">
+                        <input id="subscriber_email" type="email" class="input-newsletter" placeholder="Enter your email..."
+                            required autocomplete="email" name="fields[email]" aria-label="email" aria-required="true">
 
-                        <button type="submit">Discover now</button>
-
-                        <div id="validator-newsletter" class="form-result"></div>
+                        <button id="newsletterSubmitBottom" class="newsletter-submit-button" type="submit" disabled="true" data-toggle="tooltip" data-placement="top" title="Agree to privacy policy first">Discover now</button>
+                        <input type="hidden" name="ml-submit" value="1">
+                        <input type="hidden" name="anticsrf" value="true">
+                        <div class="ms-2 mt-1 small text-body-tertiary">
+                            <input type="checkbox" onchange="document.getElementById('newsletterSubmitBottom').disabled = !this.checked; if (this.checked) { $('#newsletterSubmitBottom').tooltip('disable'); } else { $('#newsletterSubmitBottom').tooltip('enable'); }" /> 
+                            I acknowledge that the information I provide will be processed in accordance with the <a href="privacy.html" target="_blank">Privacy Policy</a>.
+                        </div>
+                        <div id="validator-newsletter-footer" class="form-result"></div>
                     </form>
                 </div>
             </div>
@@ -799,8 +809,12 @@
     </div>
     <!-- dark version -->
 
+    <!-- reCaptcha v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf6Pc8oAAAAAFJxGvpvyN9SqUnYp97zrYVEmO2a"></script>
     <!-- Jquery Slim JS -->
     <script src="assets/js/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="assets/js/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <!-- Meanmenu JS -->
@@ -816,7 +830,7 @@
     <!-- Jquery Appear JS -->
     <script src="assets/js/jquery.appear.min.js"></script>
     <!-- Ajaxchimp JS -->
-    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/jquery.ajaxml.js"></script>
     <!-- Form Validator JS -->
     <script src="assets/js/form-validator.min.js"></script>
     <!-- Contact JS -->

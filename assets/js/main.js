@@ -1,6 +1,11 @@
 jQuery(function ($) {
     'use strict';
 	
+	// Initialize tooltips
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})
+
 	// Header Sticky
 	$(window).on('scroll',function() {
 		if ($(this).scrollTop() > 120){  
@@ -138,7 +143,7 @@ jQuery(function ($) {
 		}
 	});
 	function callbackFunction (resp) {
-		if (resp.result === "success") {
+		if (resp.success === true) {
 			formSuccessSub();
 		}
 		else {
@@ -146,16 +151,19 @@ jQuery(function ($) {
 		}
 	}
 	function formSuccessSub(){
-		$(".newsletter-form")[0].reset();
+		$(".newsletter-form").each(function(i, elem) { elem.reset(); });
+		$('.newsletter-submit-button').prop('disabled', true);
+		$('.newsletter-submit-button').tooltip('enable');
 		submitMSGSub(true, "Thank you for subscribing!");
 		setTimeout(function() {
 			$("#validator-newsletter").addClass('hide');
+			$("#validator-newsletter-footer").addClass('hide');
 		}, 4000)
 	}
 	function formErrorSub(){
-		$(".newsletter-form").addClass("animated shake");
+		$(".newsletter-form").addClass("animate__animated animate__shakeX");
 		setTimeout(function() {
-			$(".newsletter-form").removeClass("animated shake");
+			$(".newsletter-form").removeClass("animate__animated animate__shakeX");
 		}, 1000)
 	}
 	function submitMSGSub(valid, msg){
@@ -165,10 +173,11 @@ jQuery(function ($) {
 			var msgClasses = "validation-danger";
 		}
 		$("#validator-newsletter").removeClass().addClass(msgClasses).text(msg);
+		$("#validator-newsletter-footer").removeClass().addClass(msgClasses).text(msg);
 	}
-	// AJAX MailChimp
-	$(".newsletter-form").ajaxChimp({
-		url: "https://envytheme.us20.list-manage.com/subscribe/post?u=60e1ffe2e8a68ce1204cd39a5&amp;id=42d6d188d9", // Your url MailChimp
+	// AJAX MailerLite
+	$(".newsletter-form").ajaxML({
+		url: "https://assets.mailerlite.com/jsonp/641869/forms/101922589435233592/subscribe", // Your url MailerLite
 		callback: callbackFunction
 	});
 	

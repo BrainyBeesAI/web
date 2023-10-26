@@ -3122,8 +3122,6 @@ Newsletter Area CSS
         position: absolute;
         right: 4px;
         top: 4px;
-        background-color: $main-color;
-        color: $white-color;
         border: none;
         height: 52px;
         padding: 0 30px;
@@ -3135,13 +3133,17 @@ Newsletter Area CSS
         font-size: $font-size;
         font-weight: 500;
         
-        &:hover {
+        &:not([disabled]) {
+            color: $white-color;    
+            background-color: $main-color;
+        }
+
+        &:hover:not([disabled]) {
             background-color: $black-color;
             color: $white-color;
         }
     }
-    #validator-newsletter {
-        color: red;
+    #validator-newsletter, #validator-newsletter-footer {
         position: relative;
         top: 8px;
         font-size: 16px;
@@ -4226,13 +4228,6 @@ Coming Soon Area CSS
                 background-color: $optional-color;
             }
         }
-        .validation-danger {
-            margin-top: 15px;
-            color: red;
-        }
-        .validation-success {
-            margin-top: 10px;
-        }
         p {
             margin-bottom: 0;
             margin-top: 20px;
@@ -4811,15 +4806,28 @@ Class Details  Area CSS
                 background-color: $optional-color;
             }
         }
-        #validator-newsletter {
-            color: red;
+        #validator-newsletter, #validator-newsletter-footer {
             margin-top: 15px;
             font-weight: 400;
             text-align: center;
             font-weight: 400;
-        }
+       }
     }
 }
+#validator-newsletter, #validator-newsletter-footer {
+
+    &.validation-danger {
+        color: red;
+    }
+    &.validation-success {
+        color: #82b440;
+        font-size: large;
+    }
+    &.hide {
+        display: none;
+    }
+}
+
 .related-class {
     margin-top: 30px;
     

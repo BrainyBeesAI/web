@@ -2817,8 +2817,6 @@ Newsletter Area CSS
   position: absolute;
   right: 4px;
   top: 4px;
-  background-color: #ea512e;
-  color: #ffffff;
   border: none;
   height: 52px;
   padding: 0 30px;
@@ -2830,12 +2828,15 @@ Newsletter Area CSS
   font-size: 16px;
   font-weight: 500;
 }
-.newsletter-form button:hover {
+.newsletter-form button:not([disabled]) {
+  color: #ffffff;
+  background-color: #ea512e;
+}
+.newsletter-form button:hover:not([disabled]) {
   background-color: #1b0238;
   color: #ffffff;
 }
-.newsletter-form #validator-newsletter {
-  color: red;
+.newsletter-form #validator-newsletter, .newsletter-form #validator-newsletter-footer {
   position: relative;
   top: 8px;
   font-size: 16px;
@@ -3837,13 +3838,6 @@ Coming Soon Area CSS
 .coming-soon-content .newsletter-form .default-btn:hover {
   background-color: #f5890d;
 }
-.coming-soon-content .newsletter-form .validation-danger {
-  margin-top: 15px;
-  color: red;
-}
-.coming-soon-content .newsletter-form .validation-success {
-  margin-top: 10px;
-}
 .coming-soon-content .newsletter-form p {
   margin-bottom: 0;
   margin-top: 20px;
@@ -4368,12 +4362,22 @@ Class Details  Area CSS
 .class-newsletter .newsletter-form button:hover {
   background-color: #f5890d;
 }
-.class-newsletter .newsletter-form #validator-newsletter {
-  color: red;
+.class-newsletter .newsletter-form #validator-newsletter, .class-newsletter .newsletter-form #validator-newsletter-footer {
   margin-top: 15px;
   font-weight: 400;
   text-align: center;
   font-weight: 400;
+}
+
+#validator-newsletter.validation-danger, #validator-newsletter-footer.validation-danger {
+  color: red;
+}
+#validator-newsletter.validation-success, #validator-newsletter-footer.validation-success {
+  color: #82b440;
+  font-size: large;
+}
+#validator-newsletter.hide, #validator-newsletter-footer.hide {
+  display: none;
 }
 
 .related-class {
