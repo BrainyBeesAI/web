@@ -204,8 +204,6 @@ Default btn CSS
 .default-btn {
     display: inline-block;
     padding: 12px 35px;
-    background-color: $main-color;
-    color: $white-color !important;
     border-radius: 10px;
     font-size: $font-size;
     font-weight: 500;
@@ -227,7 +225,12 @@ Default btn CSS
         border-radius: 10px;
     }
 
-    &:hover {
+    &:not([disabled]) {
+        background-color: $main-color;
+        color: $white-color !important;
+    }
+
+    &:hover:not([disabled]) {
         &::before {
             height: 100%;
         }
@@ -3998,9 +4001,9 @@ Register Area CSS
         display: inline-block;
         padding: 15px 30px;
         border-radius: 30px;
-        background-color: $main-color;
-        color: $white-color;
         transition: $transition;
+        background-color: $main-color;
+        color: $white-color;    
 
         &:hover {
             background-color: $optional-color;

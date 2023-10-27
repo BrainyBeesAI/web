@@ -64,8 +64,6 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
             form.submit(function () {
                 var msg;
                 function successCallback(resp) {
-                    console.log(["success", resp, settings]);
-
                     if (resp.success === true) {
                         msg = 'We have sent you a confirmation email';
                         label.removeClass('error').addClass('valid');
@@ -93,8 +91,6 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
                     data[item.name] = item.value;
                 });
 
-                console.log(["data"], data);
-
                 grecaptcha.ready(function() {
                     grecaptcha.execute('6Lf6Pc8oAAAAAFJxGvpvyN9SqUnYp97zrYVEmO2a', {action: 'submit'}).then(function(token) {
                         $.ajax({
@@ -111,7 +107,7 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
                         var submitMsg = 'Submitting...';
                         label.html(submitMsg).show(2000);            
                     });
-                  });
+                });
 
                 return false;
             });

@@ -204,8 +204,6 @@ Default btn CSS
 .default-btn {
   display: inline-block;
   padding: 12px 35px;
-  background-color: #ea512e;
-  color: #ffffff !important;
   border-radius: 10px;
   font-size: 16px;
   font-weight: 500;
@@ -226,10 +224,14 @@ Default btn CSS
   transition: 0.5s;
   border-radius: 10px;
 }
-.default-btn:hover {
+.default-btn:not([disabled]) {
+  background-color: #ea512e;
+  color: #ffffff !important;
+}
+.default-btn:hover:not([disabled]) {
   color: #ffffff;
 }
-.default-btn:hover::before {
+.default-btn:hover:not([disabled])::before {
   height: 100%;
 }
 
@@ -3627,9 +3629,9 @@ Register Area CSS
   display: inline-block;
   padding: 15px 30px;
   border-radius: 30px;
+  transition: 0.5s;
   background-color: #ea512e;
   color: #ffffff;
-  transition: 0.5s;
 }
 .error-content .default-btn:hover {
   background-color: #f5890d;

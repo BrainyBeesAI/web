@@ -18,42 +18,57 @@
 
     function submitForm(){
         // Initiate Variables With Form Content
-        var name = $("#name").val();
-        var email = $("#email").val();
-        var msg_subject = $("#msg_subject").val();
-        var phone_number = $("#phone_number").val();
-        var message = $("#message").val();
+        var form = $('#contactForm');
 
+        var data = {};
+        var dataArray = form.serializeArray();
+        $.each(dataArray, function (index, item) {
+            data[item.name] = item.value;
+        });
 
-        $.ajax({
-            type: "POST",
-            url: "assets/php/form-process.php",
-            data: "name=" + name + "&email=" + email + "&msg_subject=" + msg_subject + "&phone_number=" + phone_number + "&message=" + message,
-            success : function(statustxt){
-                if (statustxt == "success"){
-                    formSuccess();
-                } else {
-                    formError();
-                    submitMSG(false,statustxt);
-                }
-            }
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6Lf6Pc8oAAAAAFJxGvpvyN9SqUnYp97zrYVEmO2a', {action: 'submit'}).then(function(token) {
+                $.ajax({
+                    url: "https://assets.mailerlite.com/jsonp/641869/forms/103112103498351921/subscribe",
+                    data: data,
+                    type: 'POST',
+                    success: function(resp) {
+                        if (resp.success === true){
+                            formSuccess();
+                        } else {
+                            formError();
+
+                            if (resp.errors && resp.errors.fields && resp.errors.fields.email && resp.errors.fields.email[0] !== undefined) {
+                                submitMSG(false, resp.errors.fields.email[0]);
+                            }
+                        }
+                    },
+                    dataType: 'jsonp',
+                    error: function (resp, text) {
+                        console.log('MailerLite ajax submit error: ' + text);
+                    }
+                });
+            });
         });
     }
 
     function formSuccess(){
         $("#contactForm")[0].reset();
         submitMSG(true, "Message Submitted!")
+        $('#contactSubmit').prop('disabled', true);
+		$('#contactSubmit').tooltip('enable');
     }
 
     function formError(){
-        $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            $(this).removeClass();
-        });
+        $("#contactForm").addClass("animate__animated animate__shakeX");
+		setTimeout(function() {
+			$("#contactForm").removeClass("animate__animated animate__shakeX");
+		}, 1000)
     }
 
     function submitMSG(valid, msg){
         if(valid){
-            var msgClasses = "h4 tada animated text-success";
+            var msgClasses = "h4 animate__tada animate__animated text-success";
         } else {
             var msgClasses = "h4 text-danger";
         }

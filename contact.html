@@ -150,7 +150,8 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="name" id="name" class="form-control" required
+                                        <input type="text" name="fields[name]" id="name" class="form-control" required
+                                            aria-required="true" autocomplete="name" aria-label="name"
                                             data-error="Please enter your name" placeholder="Your name">
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -158,7 +159,8 @@
 
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
-                                        <input type="email" name="email" id="email" class="form-control" required
+                                        <input type="email" name="fields[email]" id="email" class="form-control" required 
+                                            aria-required="true" autocomplete="email" aria-autocomplete="list" aria-label="email"
                                             data-error="Please enter your email" placeholder="Your email address">
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -166,7 +168,8 @@
 
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
-                                        <input type="text" name="subjecs" id="subject" class="form-control" required
+                                        <input type="text" name="fields[subject]" id="subject" class="form-control" 
+                                            aria-required="false" aria-label="subject"
                                             data-error="Please enter a subject" placeholder="Subject">
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -174,15 +177,24 @@
 
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
-                                        <textarea name="message" id="message" cols="30" rows="5" required
-                                            data-error="Please enter your message" class="form-control"
+                                        <textarea name="fields[message]" id="message" cols="30" rows="5" required
+                                            data-error="Please enter your message" class="form-control" aria-required="true" aria-label="message"
                                             placeholder="Write your message..."></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12 col-md-12">
-                                    <button type="submit" class="default-btn">Send Message</button>
+                                    <div class="form-group">
+                                        <input type="checkbox" onchange="document.getElementById('contactSubmit').disabled = !this.checked; if (this.checked) { $('#contactSubmit').tooltip('disable'); } else { $('#contactSubmit').tooltip('enable'); }" /> 
+                                        I acknowledge that the information I provide will be processed in accordance with the <a href="privacy.html" target="_blank">Privacy Policy</a>.            
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <input type="hidden" name="ml-submit" value="1">
+                                    <input type="hidden" name="anticsrf" value="true">
+                                    <button id="contactSubmit" type="submit" class="default-btn" disabled="true" data-toggle="tooltip" data-placement="bottom" title="Agree to the Privacy Policy first">Send Message</button>
                                     <div id="msgSubmit" class="h3 text-center hidden"></div>
                                     <div class="clearfix"></div>
                                 </div>
